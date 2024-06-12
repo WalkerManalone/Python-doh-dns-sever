@@ -1,11 +1,14 @@
-FROM python:3.9-slim
+FROM alpine:latest
 
-WORKDIR /app
+# 安装必要的软件
+RUN apk update && apk add --no-cache mosdns
 
-COPY . .
+# 复制配置文件
+COPY config.yaml /etc/mosdns/config.yaml
 
-RUN pip install -r requirements.txt
+# 暴露DNS端口
+EXPOSE 53/tcp
+EXPOSE 53/udp
 
-EXPOSE 10000
-
-CMD ["python", "main.py"]
+# 启动MosDNS
+CMD ["mosdns", "-c", "/etc/mosdns/config.yaml"]
