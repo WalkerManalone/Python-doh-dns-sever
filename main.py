@@ -82,4 +82,4 @@ if __name__ == "__main__":
     dns_thread.start()
 
     # 启动Flask应用
-    app.run(host='0.0.0.0', port=8000)
+    app.run(host='0.0.0.0', port=10000)  # 使用Render推荐的端口
