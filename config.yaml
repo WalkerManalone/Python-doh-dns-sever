@@ -1,0 +1,11 @@
+# 示例配置文件
+log:
+  level: info
+
+dns:
+  - name: "default"
+    address: "udp://1.1.1.1:53"
+    timeout: 5
+    cache:
+      size: 1024
+      ttl: 3600
